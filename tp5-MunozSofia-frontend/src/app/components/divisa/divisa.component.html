@@ -1,0 +1,164 @@
+<h1 class="display-6" style="margin: 2rem;">Cotización de Divisas</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="table-primary text-center">Conversor de divisas</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">
+                            <img src="../../../assets/img/estados-unidos.png" alt="bandera Estados Unidos"><br>
+                            USD
+                        </th>
+                        <th scope="col">
+                            <img src="../../../assets/img/union-europea.png" alt="bandera Union Europea"><br>
+                            EUR
+                        </th>
+                        <th scope="col">
+                            <img src="../../../assets/img/argentina.png" alt="bandera Argentina"><br>
+                            ARS
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <th scope="row">
+                            <div style="display: flex;">
+                                <div>
+                                    <img src="../../../assets/img/estados-unidos.png" alt="bandera Estados Unidos">
+                                </div>
+                                <div style="display: inline;">
+                                    1 USD <br>
+                                    Inverse
+                                </div>
+                            </div>
+                        </th>
+                        <td>
+                            1.000000 <br>
+                            1.000000
+                        </td>
+                        <td>
+                            0.919901 <br>
+                            1.087074
+                        </td>
+                        <td>
+                            150.48955 <br>
+                            0.0008484
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div style="display: flex;">
+                                <div>
+                                    <img src="../../../assets/img/union-europea.png" alt="bandera Union Europea">
+                                </div>
+                                <div style="display: inline;">
+                                    1 EUR <br>
+                                    Inverse
+                                </div>
+                            </div>
+                        </th>
+                        <td>
+                            1.087074 <br>
+                            0.919901
+                        </td>
+                        <td>
+                            1.000000 <br>
+                            1.000000
+                        </td>
+                        <td>
+                            64.125456 <br>
+                            264.85464
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <div style="display: flex;">
+                                <div>
+                                    <img src="../../../assets/img/argentina.png" alt="bandera Argentina">
+                                </div>
+                                <div style="display: inline;">
+                                    1 ARS <br>
+                                    Inverse
+                                </div>
+                            </div>
+                        </th>
+                        <td>
+                            0.000848 <br>
+                            150.4895
+                        </td>
+                        <td>
+                            264.8546 <br>
+                            64.12545
+                        </td>
+                        <td>
+                            1.000000 <br>
+                            1.000000
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="d-none d-md-block col-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="table-success text-center">Conversor de divisas</th>
+                    </tr>
+                </thead>
+            </table>
+
+            <form class="bg-success-subtle" style="padding: 0.8rem;">
+                <div class="mb-2">
+                    <label for="cantidad" class="form-label">Cantidad</label>
+                    <input type="number" name="cantidad" class="form-control" id="cantidad" [(ngModel)]="cantidad"
+                        (change)="resetResultado()">
+                </div>
+                <div class="mb-3">
+                    <label for="desdeDivisa" class="form-label">De</label><br>
+                    <select name="desdeDivisa" id="desdeDivisa" style="width: 100%" [(ngModel)]="desdeDivisa"
+                        (change)="resetResultado()">
+                        <option *ngFor="let s of opcionesDivisas" value="{{s[0]}}">{{s[0] + " " + s[1]}}</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="aDivisa" class="form-label">A</label><br>
+                    <select name="aDivisa" id="aDivisa" style="width: 100%" [(ngModel)]="aDivisa"
+                        (change)="resetResultado()">
+                        <option *ngFor="let s of opcionesDivisas" value="{{s[0]}}">{{s[0] + " " + s[1]}}</option>
+                    </select>
+                </div>          
+                <div class="mb-2">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" [(ngModel)]="email"
+                        (change)="resetResultado()">
+                </div>
+                <div class="mb-3">
+                    <br>
+                    <label type="text" class="form-control bg-dark-subtle" id="response">{{resultado}}</label>
+                </div>
+                <button *ngIf="cantidad==undefined || cantidad<=0 || 
+                    desdeDivisa==undefined || aDivisa==undefined || email==undefined || email==''" 
+                    class="btn btn-secondary" style="width: 100%;" disabled>
+                    Submit
+                    <i class="bi bi-arrow-right-circle"></i>
+                </button>
+                <button *ngIf="cantidad!=undefined && cantidad>0 && 
+                        desdeDivisa!=undefined && aDivisa!=undefined && 
+                        email!=undefined && email!=''" (click)="convertir()" class="btn btn-success"
+                    style="width: 100%;">
+                    Submit
+                    <i class="bi bi-arrow-right-circle"></i>
+                </button>
+            </form>
+        </div>
+</div>
+

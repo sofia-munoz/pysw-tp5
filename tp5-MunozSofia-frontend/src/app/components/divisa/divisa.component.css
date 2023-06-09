@@ -1,0 +1,14 @@
+i {
+    margin: 1rem;
+  }
+  
+  img {
+    height: 1rem;
+    margin-right: 1rem;
+  }
+  .container-fluid{
+      margin-bottom: 3rem;
+  }
+  label{
+    height: 2.5rem;
+  }

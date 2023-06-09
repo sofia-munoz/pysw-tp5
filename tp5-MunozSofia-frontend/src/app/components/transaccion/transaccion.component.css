@@ -1,0 +1,9 @@
+form{
+    display: flex;
+}
+.container{
+    margin: 2rem;
+}
+.table{
+    margin-top: 1rem;
+}

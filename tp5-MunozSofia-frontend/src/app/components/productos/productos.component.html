@@ -1,0 +1,51 @@
+<button id="btnAgregar" type="button" class="btn btn-primary" (click)="irFormulario()">Agregar Producto</button>
+<div class="container-fluid container-background">
+  <h1 class="display-6" style="margin: 2rem;">Productos destacados</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let prod of prodDestacados" style="margin-top: 1rem;">
+        <div class="card h-100">
+          <img class="card-img-top" [src]="prod.imagen" alt="Card image cap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="red" class="bi bi-suit-heart-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z" />
+          </svg>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ prod.nombre }}</h5>
+            <p class="card-text">{{ prod.descripcion }}</p>
+            <div class="mt-auto">
+              <p class="card-text text-center font-weight-bold mb-0" style="font-size: 1.5rem;">$ {{
+                prod.precio }}</p>
+              <button class="btn btn-primary mt-2 w-100">Comprar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <h1 class="display-6" style="margin: 2rem;">Total de Productos</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let prod of productos" style="margin-top: 1rem;">
+        <div class="card h-100">
+          <img class="card-img-top" [src]="prod.imagen" alt="Card image cap">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ prod.nombre }}</h5>
+            <p class="card-text">{{ prod.descripcion }}</p>
+            <div class="mt-auto">
+              <p class="card-text text-center font-weight-bold mb-0" style="font-size: 1.5rem;">$ {{
+                prod.precio }}</p>
+              <button class="btn btn-primary mt-2 w-100">Comprar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

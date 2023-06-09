@@ -1,0 +1,54 @@
+<div class="container">
+    <p class="fs-3">LISTADO DE TICKETS</p>
+    <button type="button" class="btn btn-primary boton" (click)="agregarTicket()">Agregar</button>
+    <button type="button" class="btn btn-primary boton" (click)="irResumen()">Resumen</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Categoria Espectador</th>
+                <th scope="col">Fecha de Compra</th>
+                <th scope="col">Espectador</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of tickets">
+                <th scope="row">{{t._id}}</th>
+                <td>{{t.precioTicket}}</td>
+                <td>
+                    <span *ngIf="t.categoriaEspectador === 'l'">Local</span>
+                    <span *ngIf="t.categoriaEspectador === 'e'">Extranjero</span>
+                </td>
+                <td>{{t.fechaCompra}}</td>
+                <td>{{t.espectador.apellido}}, {{t.espectador.nombre}}</td>
+                <td>
+                    <button type="button" class="btn btn-warning" (click)="modificarTicket(t)">Modificar</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="ticketAEliminar = t">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminación de Ticket</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que desea eliminar el registro con id {{ticketAEliminar._id}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="eliminarTicket(ticketAEliminar._id)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>

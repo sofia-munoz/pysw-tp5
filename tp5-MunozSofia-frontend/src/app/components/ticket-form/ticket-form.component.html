@@ -1,0 +1,71 @@
+<div class="container">
+    <p class="fs-3">GESTION DE TICKETS</p>
+    <div class="row">
+        <div class="col-6">
+            <form #ticketForm="ngForm">
+
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" class="form-control" id="precio" name="precio"
+                        [(ngModel)]="ticket.precioTicket" required #precio="ngModel" />
+                </div>
+                <div *ngIf="(precio.invalid && (precio.dirty || precio.touched)) || (precio.valid && precio.value<=0)"
+                    class="alert alert-danger">
+
+                    <div *ngIf="precio.errors?.['required']">
+                        Precio es requerido.
+                    </div>
+                    <div *ngIf="precio.value<=0">
+                        Precio debe ser mayor a 0.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="categoriaEspectador" class="form-label">Categoría de Espectador</label>
+                    <select class="form-select" name="categoriaEspectador" id='categoriaEspectador'
+                        [(ngModel)]="ticket.categoriaEspectador" required #categoria="ngModel">
+                        <option value="l">Local</option>
+                        <option value="e">Extranjero</option>
+                    </select>
+                </div>
+                <div *ngIf="(categoria.invalid && (categoria.dirty || categoria.touched))" class="alert alert-danger">
+
+                    <div *ngIf="categoria.errors?.['required']">
+                        Categoria es requerido.
+                    </div>
+                </div>
+                <!--TODO: Reemplazar por datepicker-->
+                <div class="mb-3">
+                    <label for="fecha" class="form-label">Fecha Compra</label>
+                    <input type="" class="form-control" id="fecha" name="fecha" [(ngModel)]="ticket.fechaCompra"
+                        #fecha="ngModel" placeholder="dd/MM/yyyy" />
+                </div>
+                <div *ngIf="(fecha.invalid && (fecha.dirty || fecha.touched))" class="alert alert-danger">
+
+                    <div *ngIf="fecha.errors?.['required']">
+                        Fecha de Compra es requerido.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="espectador" class="form-label">Espectador</label>
+                    <select class="form-select" name="espectador" id='espectador' [(ngModel)]="ticket.espectador"
+                        #espectador="ngModel">
+                        <option [ngValue]="e" *ngFor="let e of espectadores">{{e.apellido}}, {{e.nombre}}</option>
+                    </select>
+                </div>
+                <div *ngIf="(espectador.invalid && (espectador.dirty || espectador.touched))"
+                    class="alert alert-danger">
+
+                    <div *ngIf="espectador.errors?.['required']">
+                        Espactador es requerido.
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary" (click)="guardarTicket()" *ngIf="action=='new'">Registrar</button>
+                <button class="btn btn-warning" (click)="modificarTicket()" *ngIf="action=='update'">Modificar</button>
+                <button class="btn btn-primary boton" (click)="volverLista()">Volver</button>
+            </form>
+        </div>
+    </div>
+</div>

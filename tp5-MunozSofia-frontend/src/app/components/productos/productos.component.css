@@ -1,0 +1,27 @@
+.card:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+.navbar-brand{
+color: black;
+}
+.navbar-toggler{
+background-color: rgb(128, 128, 128);
+opacity: 75%;
+}
+svg{
+position: absolute;
+right: 0.5rem;
+top: 0.5rem;
+}
+#btnAgregar{
+margin-left: 3rem;
+margin-top: 3rem;
+}
+.container-background{
+background-color: lightgray;
+}
+.container{
+padding-bottom: 3rem;
+}
+
